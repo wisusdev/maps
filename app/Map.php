@@ -14,4 +14,9 @@ class Map extends Model
     protected $fillable = [
         'title', 'address', 'radius', 'latitude', 'longitude',
     ];
+
+  	public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

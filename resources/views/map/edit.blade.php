@@ -13,6 +13,19 @@
                             <input id="title" name="title" value='{{$map->title}}' placeholder="Nombre de marcador" type="text" required="required" class="form-control here">
                         </div>
                         <div class="form-group">
+                            <label for="category">Categoria</label>
+                            <select class="form-control" id="select"  name="category" placeholder="Opciones" required="required">
+                                <option value="" selected disabled>Please select</option>
+                                @foreach($category as $cat)
+                                    <option value="{{$cat->id}}" {{$map->category_id == $cat->id ? 'selected' : ''}}>{{$cat->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label> 
+                            <textarea class="form-control" id="description" name="description" rows="3">{{$map->description}}</textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="location">Dirección</label> 
                             <input id="location" name="location" value='{{$map->address}}' placeholder="Dirección del marcador" type="text" required="required" class="form-control here">
                         </div>

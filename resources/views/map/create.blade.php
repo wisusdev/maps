@@ -13,6 +13,19 @@
                             <input id="title" name="title" placeholder="Nombre de marcador" type="text" required="required" class="form-control here">
                         </div>
                         <div class="form-group">
+                            <label for="category">Categoria</label>
+                            <select class="form-control" id="select"  name="category" placeholder="Opciones" required="required">
+                                <option value="" selected disabled>Please select</option>
+                                @foreach($category as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label> 
+                            <textarea class="form-control" id="description" name="description" placeholder="Description" rows="3" required="required"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="location">Dirección</label> 
                             <input id="location" name="location" placeholder="Dirección del marcador" type="text" required="required" class="form-control here">
                         </div>
@@ -50,7 +63,7 @@
 @endsection
 
 @section('header')
-    <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?libraries=places'></script>
+    <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCICVFZg9PawAeVO5oH_BRdE7IEu93eG8E&libraries=places'></script>
 
     <script type="text/javascript" src="{{asset('js/locationpicker.jquery.js')}}"></script>
 @endsection

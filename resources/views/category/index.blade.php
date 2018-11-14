@@ -4,29 +4,17 @@
     <div class="row">
    		<div class="col-sm-12">			
 			<div class="card border-warning mb-3">
-			  <div class="card-header"><a href="{{url('maps/create')}}">Crear Punto</a></div>
+			  <div class="card-header"><a href="{{url('category/create')}}">Crear Categoria</a></div>
 			  <div class="card-body">
 			  	<table class="table table-hover">
-				  <thead>
-				    <tr>
-				      <th scope="col">Titulo</th>
-				      <th scope="col">Latitud</th>
-				      <th scope="col">Longitud</th>
-				      <th scope="col">Radio</th>
-				      <th scope="col">Opciones</th>
-				    </tr>
-				  </thead>
 				  <tbody>
-				  	@foreach($maps as $map)
+				  	@foreach($category as $cat)
 				    <tr>
-				      <th>{{$map->title}}</th>
-				      <td>{{$map->latitude}}</td>
-				      <td>{{$map->longitude}}</td>
-				      <td>{{$map->radius}}</td>
+				      <th>{{$cat->name}}</th>
 				      <td>
-				      	<a class="btn btn-xs btn-primary" href="{{url('maps/'.$map->id.'/edit')}}">Editar</a>
+				      	<a class="btn btn-xs btn-primary" href="{{url('category/'.$cat->id.'/edit')}}">Editar</a>
 				      	<form method="POST"
-								action="{{ route('maps.destroy', $map->id) }}"
+								action="{{ route('category.destroy', $cat->id) }}"
 								style="display: inline">
 								{{ csrf_field() }} {{ method_field('DELETE') }}
 								<button class="btn btn-xs btn-danger"

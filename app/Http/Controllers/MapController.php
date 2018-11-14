@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Map;
+use App\Category;
 use Illuminate\Http\Request;
 
 class MapController extends Controller
@@ -25,8 +26,9 @@ class MapController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('map.create');
+    {        
+        $category = Category::all();
+        return view('map.create', compact('category'));
     }
 
     /**
@@ -39,6 +41,8 @@ class MapController extends Controller
     {
         $map = new Map;
         $map->user_id = Auth::user()->id;
+        $map->category_id = $request->category;
+        $map->description = $request->description;
         $map->title = $request->title;
         $map->address = $request->location;
         $map->radius = $request->radius;
@@ -69,7 +73,8 @@ class MapController extends Controller
      */
     public function edit(Map $map)
     {
-        return view('map.edit', compact('map'));
+        $category = Category::all();
+        return view('map.edit', compact('map', 'category'));
     }
 
     /**
@@ -82,6 +87,8 @@ class MapController extends Controller
     public function update(Request $request, Map $map)
     {
         $map->user_id   = Auth::user()->id;
+        $map->category_id = $request->category;
+        $map->description = $request->description;
         $map->title     = $request->title;
         $map->address   = $request->location;
         $map->radius    = $request->radius;
